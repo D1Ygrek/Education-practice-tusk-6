@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,14 @@ namespace ConsoleApp6
 {
     class Program
     {
+        static void recur(double a1,double a2,double a3,int n,double[] arr)
+        {
+            if (n < arr.Length)
+            {
+                arr[n]= 13 * a1 - 10 * a2 + a3;
+                recur(arr[n], a1, a2, n + 1, arr);
+            }
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("Введите первый элемент последовательности");
@@ -37,9 +45,12 @@ namespace ConsoleApp6
             arr[2] = a3;
             Console.WriteLine("Последовательность:");
             Console.Write(a1 + " " + a2 + " " + a3 + " ");
+            if (n > 3)
+            {
+                recur(arr[2], arr[1], arr[0], 3, arr);
+            }
             for(int i = 3; i < n; i++)
             {
-                arr[i] = 13 * arr[i - 1] - 10 * arr[i - 2] + arr[i - 3];
                 Console.Write(arr[i] + " ");
             }ok = true;
             double zeroel = arr[1];
@@ -101,3 +112,4 @@ namespace ConsoleApp6
         }
     }
 }
+
